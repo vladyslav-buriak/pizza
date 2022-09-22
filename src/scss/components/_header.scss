@@ -1,16 +1,18 @@
-@import '../variables.scss';
-
+@import "../variables.scss";
 
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
-  .container {
+  &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
   &__logo {
     display: flex;
 

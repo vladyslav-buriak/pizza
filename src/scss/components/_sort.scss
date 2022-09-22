@@ -3,6 +3,10 @@
 
 .sort {
   position: relative;
+
+  @media(max-width:1250px){
+    padding-left: 1rem;
+  }
   &__label {
     display: flex;
     align-items: center;
@@ -13,6 +17,9 @@
 
     b {
       margin-right: 8px;
+      @media(max-width:1250px){
+        display: none;
+      }
     }
 
     span {
