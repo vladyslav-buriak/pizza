@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../Context";
+
 
 const Categories = () => {
   const categoryNames = [
@@ -9,17 +11,19 @@ const Categories = () => {
     "Острые",
     "Закрытые",
   ];
+
+  const {sortCategory,setSortCategory} = useContext(Context);
   
-  const [activeCategory, setActiveCategory] = useState(0);
+  // const [activeCategory, setActiveCategory] = useState(0);
 
   return (
     <div className="categories">
       <ul>
         {categoryNames.map((n, i) => (
           <li
-            className={i === activeCategory ? "active" : ""}
+            className={i === sortCategory ? "active" : ""}
             onClick={() => {
-              setActiveCategory(i);
+              setSortCategory(i);
             }}
             key={n}
           >

@@ -6,8 +6,10 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 
 <App />;
+
 function App() {
   return (
+
     <div className="App">
       <div className="wrapper">
         <Header />
@@ -22,6 +24,7 @@ function App() {
         </div>
       </div>
     </div>
+  
   );
 }
 

@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../Context";
 
 const Sort = () => {
-  const menuList = ["популярности", "цене", "алфавиту"];
+  const menuList = [
+    { name: "популярности", sortProps: "ratings" },
+    { name: "цене", sortProps: "price" },
+    { name: "алфавиту", sortProps: "title" },
+  ];
 
-  const [activeCategory, setActiveCategory] = useState(0);
   const [isOpenWindow, setIsOpenWindow] = useState(false);
-  const selectedName = menuList[activeCategory];
 
-  const selectedCategory = (arg) => {
-    setActiveCategory(arg);
+  const { sortName, setSortName } = useContext(Context);
+
+  const selectedCategory = (name, sortProps) => {
+    setSortName({ name, sortProps });
     setIsOpenWindow(false);
   };
 
@@ -33,7 +38,7 @@ const Sort = () => {
             setIsOpenWindow(!isOpenWindow);
           }}
         >
-          {selectedName}
+          {sortName.name}
         </span>
       </div>
       {isOpenWindow && (
@@ -41,13 +46,13 @@ const Sort = () => {
           <ul>
             {menuList.map((l, i) => (
               <li
-                className={activeCategory === i ? "active" : ""}
+                className={sortName.name === l.name ? "active" : ""}
                 onClick={() => {
-                  selectedCategory(i);
+                  selectedCategory(l.name, l.sortProps);
                 }}
-                key={l}
+                key={l.name}
               >
-                {l}
+                {l.name}
               </li>
             ))}
           </ul>
