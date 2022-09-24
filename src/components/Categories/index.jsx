@@ -4,12 +4,12 @@ import { Context } from "../../Context";
 
 const Categories = () => {
   const categoryNames = [
-    "Все",
-    "Мясные",
-    "Вегетарианския",
+    "Всі",
+    "М'ясні",
+    "Вегетаріанські",
     "Гриль",
-    "Острые",
-    "Закрытые",
+    "Гострі",
+    "Закрити",
   ];
 
   const {sortCategory,setSortCategory} = useContext(Context);

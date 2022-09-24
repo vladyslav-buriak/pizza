@@ -3,17 +3,20 @@ import { Context } from "../../Context";
 
 const Sort = () => {
   const menuList = [
-    { name: "популярности", sortProps: "ratings" },
-    { name: "цене", sortProps: "price" },
-    { name: "алфавиту", sortProps: "title" },
+    { name: "за популярністю (від більш)", sortProps: "rating",sortOrder:'desc' },
+    { name: "за популярністю (від меньш)", sortProps: "rating",sortOrder:'asc' },
+    { name: "ціна (від дорогих)", sortProps: "price",sortOrder:'desc' },
+    { name: "цене (від дешевых)", sortProps: "price",sortOrder:'asc' },
+    { name: "за алфавітом (від а до я)", sortProps: "title" ,sortOrder:'asc' },
+    { name: "за алфавітом (від я до а)", sortProps: "title" ,sortOrder:'desc' },
   ];
 
   const [isOpenWindow, setIsOpenWindow] = useState(false);
 
   const { sortName, setSortName } = useContext(Context);
 
-  const selectedCategory = (name, sortProps) => {
-    setSortName({ name, sortProps });
+  const selectedCategory = (name, sortProps,sortOrder) => {
+    setSortName({ name, sortProps,sortOrder });
     setIsOpenWindow(false);
   };
 
@@ -32,7 +35,7 @@ const Sort = () => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
+        <b>Сортувати за:</b>
         <span
           onClick={() => {
             setIsOpenWindow(!isOpenWindow);
@@ -48,7 +51,7 @@ const Sort = () => {
               <li
                 className={sortName.name === l.name ? "active" : ""}
                 onClick={() => {
-                  selectedCategory(l.name, l.sortProps);
+                  selectedCategory(l.name, l.sortProps,l.sortOrder);
                 }}
                 key={l.name}
               >

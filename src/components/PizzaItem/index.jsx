@@ -4,7 +4,8 @@ const PizzaItem = ({ imageUrl, title, price, sizes, types }) => {
   const [addCount, setAddCount] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
   const [activeType, setActiveType] = useState(0);
-  const typePizza = ["тонкое", "традиционное"];
+  
+  const typePizza = ["тонке", "традиційне"];
 
   const handlerPizzaCount = () => {
     setAddCount(addCount + 1);
@@ -60,7 +61,7 @@ const PizzaItem = ({ imageUrl, title, price, sizes, types }) => {
               fill="white"
             />
           </svg>
-          <span>Добавить</span>
+          <span>Додати</span>
           <i>{addCount}</i>
         </div>
       </div>
