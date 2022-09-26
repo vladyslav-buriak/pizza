@@ -6,7 +6,7 @@ const Sort = () => {
     { name: "за популярністю (від більш)", sortProps: "rating",sortOrder:'desc' },
     { name: "за популярністю (від меньш)", sortProps: "rating",sortOrder:'asc' },
     { name: "ціна (від дорогих)", sortProps: "price",sortOrder:'desc' },
-    { name: "цене (від дешевых)", sortProps: "price",sortOrder:'asc' },
+    { name: "ціна (від дешевых)", sortProps: "price",sortOrder:'asc' },
     { name: "за алфавітом (від а до я)", sortProps: "title" ,sortOrder:'asc' },
     { name: "за алфавітом (від я до а)", sortProps: "title" ,sortOrder:'desc' },
   ];

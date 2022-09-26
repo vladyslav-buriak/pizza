@@ -1,0 +1,32 @@
+.wrapp {
+  position: relative;
+  .icon {
+    width: 1.2rem;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-40%);
+    cursor: pointer;
+    color: #fe5f1e;
+  }
+
+  .search {
+    width: 300px;
+    outline: none;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 35px;
+    transition: ease-in 0.4s;
+    font-size: 1rem;
+
+    &:focus-within {
+      border: 1px solid rgba(0, 0, 0, 1);
+    }
+  }
+}
