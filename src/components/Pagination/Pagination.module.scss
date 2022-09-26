@@ -1,0 +1,44 @@
+@import "../../scss/variables.scss";
+
+.paginationWrapp {
+    display: flex;
+
+    li {
+        border: 1px solid $orange;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: ease-in 0.4s;
+
+        &:hover {
+            background-color: $orange;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    a {
+
+        font-size: 1rem;
+        color: $orange
+    }
+}
+
+:global {
+    .selected a {
+        color: #fff;
+
+    }
+
+    .selected {
+        background-color: $orange;
+
+    }
+}

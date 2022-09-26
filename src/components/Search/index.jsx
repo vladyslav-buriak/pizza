@@ -41,6 +41,7 @@ const Search = () => {
         type="text"
         placeholder="Пошук піци..."
       ></input>
+ 
     </div>
   );
 };
