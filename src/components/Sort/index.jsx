@@ -1,22 +1,46 @@
-import { useContext, useState } from "react";
-import { Context } from "../../Context";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSortType } from "../../redux/slices/filterSlice";
 
-const Sort = () => {
-  const menuList = [
-    { name: "за популярністю (від більш)", sortProps: "rating",sortOrder:'desc' },
-    { name: "за популярністю (від меньш)", sortProps: "rating",sortOrder:'asc' },
-    { name: "ціна (від дорогих)", sortProps: "price",sortOrder:'desc' },
-    { name: "ціна (від дешевых)", sortProps: "price",sortOrder:'asc' },
-    { name: "за алфавітом (від а до я)", sortProps: "title" ,sortOrder:'asc' },
-    { name: "за алфавітом (від я до а)", sortProps: "title" ,sortOrder:'desc' },
-  ];
+const menuList = [
+  {
+    name: "за популярністю (від більш)",
+    sortProps: "rating",
+    sortOrder: "desc",
+  },
+  {
+    name: "за популярністю (від меньш)",
+    sortProps: "rating",
+    sortOrder: "asc",
+  },
+  {
+    name: "ціна (від дорогих)",
+    sortProps: "price",
+    sortOrder: "desc",
+  },
+  {
+    name: "ціна (від дешевых)",
+    sortProps: "price",
+    sortOrder: "asc",
+  },
+  {
+    name: "за алфавітом (від а до я)",
+    sortProps: "title",
+    sortOrder: "asc",
+  },
+  {
+    name: "за алфавітом (від я до а)",
+    sortProps: "title",
+    sortOrder: "desc",
+  },
+];
+const Sort = ({ currentSortBy }) => {
+  const dispatch = useDispatch();
 
   const [isOpenWindow, setIsOpenWindow] = useState(false);
 
-  const { sortName, setSortName } = useContext(Context);
-
-  const selectedCategory = (name, sortProps,sortOrder) => {
-    setSortName({ name, sortProps,sortOrder });
+  const selectedCategory = (obj) => {
+    dispatch(setSortType(obj));
     setIsOpenWindow(false);
   };
 
@@ -41,7 +65,7 @@ const Sort = () => {
             setIsOpenWindow(!isOpenWindow);
           }}
         >
-          {sortName.name}
+          {currentSortBy.name}
         </span>
       </div>
       {isOpenWindow && (
@@ -49,9 +73,13 @@ const Sort = () => {
           <ul>
             {menuList.map((l, i) => (
               <li
-                className={sortName.name === l.name ? "active" : ""}
+                className={currentSortBy.name === l.name ? "active" : ""}
                 onClick={() => {
-                  selectedCategory(l.name, l.sortProps,l.sortOrder);
+                  selectedCategory({
+                    name: l.name,
+                    sortProps: l.sortProps,
+                    sortOrder: l.sortOrder,
+                  });
                 }}
                 key={l.name}
               >

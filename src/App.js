@@ -5,26 +5,16 @@ import Cart from "./pages/Cart";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import { Context } from "./Context";
-import { useEffect, useState, useContext } from "react";
+import { useState } from "react";
 
 <App />;
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  const [sortCategory, setSortCategory] = useState(0);
-  const [sortName, setSortName] = useState({
-    name: "за популярністю",
-    sortProps: "rating",
-    sortOrder: "desc",
-  });
 
   return (
     <Context.Provider
       value={{
-        sortCategory,
-        setSortCategory,
-        sortName,
-        setSortName,
         searchValue,
         setSearchValue,
       }}

@@ -1,8 +1,6 @@
-import { useContext, useState } from "react";
-import { Context } from "../../Context";
 
+const Categories = ({ currentCat, handlerCategory }) => {
 
-const Categories = () => {
   const categoryNames = [
     "Всі",
     "М'ясні",
@@ -12,18 +10,14 @@ const Categories = () => {
     "Закрити",
   ];
 
-  const {sortCategory,setSortCategory} = useContext(Context);
-  
-  // const [activeCategory, setActiveCategory] = useState(0);
-
   return (
     <div className="categories">
       <ul>
         {categoryNames.map((n, i) => (
           <li
-            className={i === sortCategory ? "active" : ""}
+            className={i === currentCat ? "active" : ""}
             onClick={() => {
-              setSortCategory(i);
+              handlerCategory(i);
             }}
             key={n}
           >
