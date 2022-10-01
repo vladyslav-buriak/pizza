@@ -20,8 +20,6 @@ const Home = () => {
   const pages = Math.ceil(count / 3);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // const selectedCatId = useSelector((state) => state.filter.currentCat);
-  // const sortBy = useSelector((state) => state.filter.currentSortBy);
   const {currentSortBy ,currentCat} = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
