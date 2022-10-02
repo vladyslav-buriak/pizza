@@ -16,7 +16,7 @@ const Home = () => {
   const BASE_URL = "https://63276da95731f3db99593be8.mockapi.io/products?";
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(0);
   const pages = Math.ceil(count / 3);
   const [currentPage, setCurrentPage] = useState(1);
 

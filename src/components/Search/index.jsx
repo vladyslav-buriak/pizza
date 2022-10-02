@@ -5,27 +5,29 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import debounce from "lodash.debounce";
 
 const Search = () => {
-  const { searchValue, setSearchValue } = useContext(Context);
+  const { setSearchValue } = useContext(Context);
+  const [value, setValue] = useState("");
   const inpRef = useRef();
 
-  const handlerSearch = (e) => {
-    setSearchValue(e.target.value);
-    debounceSearch();
+  const handlerOnChange = (e) => {
+    setValue(e.target.value);
+    updateHandlerOnChange(e);
   };
 
-  const debounceSearch = useCallback(
-    debounce(() => {
-      console.log("debounce");
+  const updateHandlerOnChange = useCallback(
+    debounce((e) => {
+      setSearchValue(e.target.value);
     }, 1000),
     []
   );
 
   return (
     <div className={styles.wrapp}>
-      {searchValue && (
+      {value && (
         <span
           onClick={() => {
             inpRef.current.focus();
+            setValue("");
             setSearchValue("");
           }}
           className={styles.close}
@@ -49,8 +51,8 @@ const Search = () => {
       </svg>
       <input
         ref={inpRef}
-        onChange={handlerSearch}
-        value={searchValue}
+        onChange={handlerOnChange}
+        value={value}
         className={styles.search}
         type="text"
         placeholder="Пошук піци..."
