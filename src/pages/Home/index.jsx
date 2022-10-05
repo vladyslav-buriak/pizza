@@ -9,8 +9,10 @@ import { Context } from "../../Context";
 import Pagination from "../../components/Pagination";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setSortCategory } from "../../redux/slices/filterSlice";
-
+import {
+  setSortCategory,
+  setCurrentPage,
+} from "../../redux/slices/filterSlice";
 
 const Home = () => {
   const BASE_URL = "https://63276da95731f3db99593be8.mockapi.io/products?";
@@ -18,24 +20,21 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(0);
   const pages = Math.ceil(count / 3);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  const {currentSortBy ,currentCat} = useSelector((state) => state.filter);
+  const { currentSortBy, currentCat, currentPage } = useSelector(
+    (state) => state.filter
+  );
 
   const dispatch = useDispatch();
 
-
   const { searchValue } = useContext(Context);
-
-  const handlePageClick = (e) => {
-    const selectedPage = e.selected + 1;
-    setCurrentPage(selectedPage);
-  };
 
   const handlerCategory = (index) => {
     dispatch(setSortCategory(index));
   };
-
+  const handlerPagination = (page) => {
+    dispatch(setCurrentPage(page));
+  };
   useEffect(() => {
     getAllPizzas();
   }, [currentSortBy, searchValue, currentPage, currentCat]);
@@ -43,13 +42,14 @@ const Home = () => {
   const getAllPizzas = async () => {
     setIsLoading(true);
 
-    const category =
-    currentCat > 0 ? `&category=${currentCat}` : " ";
+    const category = currentCat > 0 ? `&category=${currentCat}` : " ";
 
     try {
       await axios
         .get(
-          `${BASE_URL}&search=${searchValue}&sortBy=${currentSortBy.sortProps}&order=${
+          `${BASE_URL}&search=${searchValue}&sortBy=${
+            currentSortBy.sortProps
+          }&order=${
             currentSortBy.sortOrder
           }&page=${currentPage}&limit=${3}${category}`
         )
@@ -80,7 +80,7 @@ const Home = () => {
               return <PizzaItem key={i} {...p} />;
             })}
       </div>
-      <Pagination pages={pages} changePages={handlePageClick} />
+      <Pagination pages={pages} changePages={handlerPagination} />
     </>
   );
 };
