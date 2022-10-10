@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSortType } from "../../redux/slices/filterSlice";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const menuList = [
   {
@@ -36,7 +38,7 @@ const menuList = [
 ];
 const Sort = ({ currentSortBy }) => {
   const dispatch = useDispatch();
-
+  const divRef = useRef();
   const [isOpenWindow, setIsOpenWindow] = useState(false);
 
   const selectedCategory = (obj) => {
@@ -44,8 +46,21 @@ const Sort = ({ currentSortBy }) => {
     setIsOpenWindow(false);
   };
 
+  useEffect(() => {
+    const handleOnclickOutside = (e) => {
+      if (!e.composedPath().includes(divRef.current)) {
+        setIsOpenWindow(false);
+      }
+    };
+    document.querySelector("body").onclick = handleOnclickOutside;
+
+    return () => {
+      document.querySelector("body").onclick = handleOnclickOutside;
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div className="sort" ref={divRef}>
       <div className="sort__label">
         <svg
           width="10"
