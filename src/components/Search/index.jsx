@@ -1,13 +1,14 @@
-import { useCallback, useContext, useRef, useState } from "react";
-import { Context } from "../../Context";
+import { useCallback, useRef, useState } from "react";
 import styles from "./Search.module.scss";
 import { FaRegTimesCircle } from "react-icons/fa";
 import debounce from "lodash.debounce";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../../redux/slices/filterSlice";
 
 const Search = () => {
-  const { setSearchValue } = useContext(Context);
   const [value, setValue] = useState("");
   const inpRef = useRef();
+  const dispatch = useDispatch();
 
   const handlerOnChange = (e) => {
     setValue(e.target.value);
@@ -16,7 +17,7 @@ const Search = () => {
 
   const updateHandlerOnChange = useCallback(
     debounce((e) => {
-      setSearchValue(e.target.value);
+      dispatch(setSearchValue(e.target.value));
     }, 1000),
     []
   );
@@ -28,7 +29,7 @@ const Search = () => {
           onClick={() => {
             inpRef.current.focus();
             setValue("");
-            setSearchValue("");
+            dispatch(setSearchValue(""));
           }}
           className={styles.close}
         >

@@ -1,14 +1,14 @@
 import React from "react";
 import cartImg from "../../../assets/images/empty-cart.png";
 
-const CartEmpty = () => {
+const CartEmpty = ({ children }) => {
   return (
     <div class="content">
       <div class="container container--cart">
         <div class="cart cart--empty">
-          <h2>
-            Корзина пустая <icon>😕</icon>
-          </h2>
+          {children}
+          <icon>😕</icon>
+
           <p>
             Вероятней всего, вы не заказывали ещё пиццу.
             <br />
