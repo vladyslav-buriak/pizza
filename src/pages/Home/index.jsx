@@ -62,7 +62,9 @@ const Home = () => {
       ) : (
         <div className="content__items">
           {loading === "pending"
-            ? [...new Array(6)].map((_, i) => <SkeletonPizza key={i} />)
+            ? [...new Array(6)].map((_, i) => (
+                <SkeletonPizza key={i} info={true} height={260} />
+              ))
             : pizzasItem.map((p, i) => {
                 return <PizzaItem key={i} {...p} />;
               })}

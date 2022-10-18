@@ -16,9 +16,8 @@ body {
   border-radius: 10px;
   max-width: 1400px;
 
-  @media(max-width:768px){
-   width: calc(100vw - 30px);
-
+  @media (max-width: 768px) {
+    width: calc(100vw - 30px);
   }
 }
 
@@ -61,7 +60,7 @@ body {
   }
 }
 
-.content__items--card{
+.content__items--card {
   display: block;
 }
 
@@ -150,7 +149,7 @@ body {
       img {
         width: 80px;
         height: 80px;
-        @media(max-width:768px){
+        @media (max-width: 768px) {
           width: 60px;
           height: 60px;
         }
@@ -162,7 +161,7 @@ body {
       flex-direction: column;
       justify-content: center;
       width: 40%;
-      @media(max-width:768px){
+      @media (max-width: 768px) {
         width: 55%;
       }
 

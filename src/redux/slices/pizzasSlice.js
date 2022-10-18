@@ -14,7 +14,7 @@ export const fetchAllPizzas = createAsyncThunk(
   "users/fetchPizzas",
   async ({ searchValue, sortBy, order, category, currentPage, limit }) => {
     const { data } = await axios.get(
-      `${BASE_URL}&search=${searchValue}&sortBy=${sortBy}&order=${order}&page=${currentPage}&limit=${limit}${category}`
+      `${BASE_URL}?&search=${searchValue}&sortBy=${sortBy}&order=${order}&page=${currentPage}&limit=${limit}${category}`
     );
 
     return data;
