@@ -1,18 +1,18 @@
-import axios from "axios";
 import styles from "./PizzaInfo.module.scss";
+import React, { useEffect } from "react";
 import { FaStar } from "react-icons/fa";
-import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BASE_URL } from "../../Consts";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPizza, selectAbout } from "../../redux/slices/aboutSlice";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
 
+
 const PizzaInfo = () => {
-  const [pizza, setPizza] = useState();
-  const [rating, setRating] = useState();
-
+  const dispatch = useDispatch();
+  const { pizza, rating, loading } = useSelector(selectAbout);
   const { id } = useParams();
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
   let raitingArr = [];
@@ -20,21 +20,15 @@ const PizzaInfo = () => {
     raitingArr.push(i);
   }
 
-  const fetchPizza = async () => {
-    try {
-      const { data } = await axios.get(`${BASE_URL}${id}`);
-      setPizza(data.products);
-      setRating(data.products.rating);
-    } catch (e) {
-      alert(e);
-    }
+  const getPizzaInfo = async () => {
+    dispatch(fetchPizza(id));
   };
 
   useEffect(() => {
-    fetchPizza();
+    getPizzaInfo();
   }, []);
 
-  if (!pizza) {
+  if (loading === "pending") {
     return <SkeletonPizza info={false} height={400} width={400} />;
   }
   return (
