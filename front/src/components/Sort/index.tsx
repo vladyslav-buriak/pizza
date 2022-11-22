@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSortType } from "../../redux/slices/filterSlice";
 import { useEffect } from "react";
@@ -12,7 +12,7 @@ type menuItem = {
 };
 
 interface currentSortByProps {
-  currentSortBy:menuItem
+  currentSortBy: menuItem;
 }
 
 const menuList: menuItem[] = [
@@ -48,7 +48,7 @@ const menuList: menuItem[] = [
   },
 ];
 
-const Sort = ({currentSortBy}:currentSortByProps) => {
+const Sort: FC<currentSortByProps> = ({ currentSortBy }) => {
   const dispatch = useDispatch();
   const divRef = useRef<HTMLDivElement>(null);
   const [isOpenWindow, setIsOpenWindow] = useState(false);
