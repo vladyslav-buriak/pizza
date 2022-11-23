@@ -52,5 +52,8 @@
   "main": "index.js",
   "repository": "https://github.com/vladyslav-buriak/pizza.git",
   "author": "vladyslav buriak <vladka910@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7"
+  }
 }

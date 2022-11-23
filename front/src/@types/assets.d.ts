@@ -3,8 +3,9 @@ declare module "*.png" {
     export default content;
   }
 
-
   declare module "*.scss" {
-    const content: any;
-    export default content;
+    const classes: Record<string, string>;
+    export default classes;
   }
+  
+ 
