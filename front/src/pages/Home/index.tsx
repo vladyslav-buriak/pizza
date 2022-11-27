@@ -1,5 +1,5 @@
 import "../../scss/app.scss";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
@@ -15,7 +15,7 @@ import Sort from "../../components/Sort";
 import CartEmpty from "../Cart/CartEmpty";
 import Pagination from "../../components/Pagination";
 
-const Home = () => {
+const Home:FC = () => {
   const { currentSortBy, currentCat, currentPage, searchValue } =
     useSelector(selectFilter);
   const { pizzasItem, amount, limit, loading } = useSelector(selectPizzas);
