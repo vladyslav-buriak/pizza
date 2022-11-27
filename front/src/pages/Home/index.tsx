@@ -22,11 +22,11 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const handlerCategory = (index:number) => {
+  const handlerCategory = (index: number) => {
     dispatch(setSortCategory(index));
   };
 
-  const handlerPagination = (page:number) => {
+  const handlerPagination = (page: number) => {
     dispatch(setCurrentPage(page));
   };
 
@@ -66,7 +66,7 @@ const Home = () => {
             ? [...new Array(6)].map((_, i) => (
                 <SkeletonPizza key={i} info={true} height={260} />
               ))
-            : pizzasItem.map((p:any, i:number) => {
+            : pizzasItem.map((p: any, i: number) => {
                 return <PizzaItem key={i} {...p} />;
               })}
         </div>
