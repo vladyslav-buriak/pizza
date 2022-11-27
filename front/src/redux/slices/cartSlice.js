@@ -52,7 +52,7 @@ export const cartSlice = createSlice({
       }
     },
 
-    setClearCart: (state, action) => {
+    setClearCart: (state) => {
       state.items = [];
       state.totalPrice = 0;
     },
