@@ -32,6 +32,7 @@ export const aboutSlice = createSlice({
     [fetchPizza.fulfilled]: (state, action) => {
       state.loading = "success";
       state.pizza = { ...action.payload.products };
+      state.rating = action.payload.products.rating;
     },
     [fetchPizza.rejected]: (state, action) => {
       state.loading = "error";

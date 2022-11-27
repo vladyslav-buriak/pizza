@@ -28,14 +28,14 @@ export const cartSlice = createSlice({
         return p.id === action.payload;
       });
 
-      if (find && find.count > 1) {
+      if (find && find.count <= 1) {
+        state.items = state.items.filter((p) => p.id !== action.payload);
+        state.totalPrice = state.totalPrice - find.price;
+      } else {
         find.count--;
         state.totalPrice = state.items.reduce((sum, item) => {
           return item.price * item.count + sum;
         }, 0);
-      } else {
-        state.items = state.items.filter((p) => p.id !== action.payload);
-        state.totalPrice = 0;
       }
     },
 

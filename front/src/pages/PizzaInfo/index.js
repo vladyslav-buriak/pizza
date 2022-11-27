@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPizza, selectAbout } from "../../redux/slices/aboutSlice";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
 
-
 const PizzaInfo = () => {
   const dispatch = useDispatch();
   const { pizza, rating, loading } = useSelector(selectAbout);
+  console.log(rating);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const PizzaInfo = () => {
           Давно выяснено, что при оценке дизайна и композиции читаемый текст
           мешает сосредоточиться. Lorem Ipsum используют потому, что тот
         </p>
+
         <div className={styles.wrappRaiting}>
           <span className={styles.raiting}>Рейтинг</span>
           {raitingArr.map((r) => (
