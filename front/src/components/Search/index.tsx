@@ -1,4 +1,4 @@
-import { FC, useCallback, useRef, useState } from "react";
+import React, { FC, useCallback, useRef, useState } from "react";
 import styles from "./Search.module.scss";
 import { FaRegTimesCircle } from "react-icons/fa";
 import debounce from "lodash.debounce";
@@ -10,13 +10,13 @@ const Search: FC = () => {
   const inpRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  const handlerOnChange = (e: any) => {
+  const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     updateHandlerOnChange(e);
   };
 
   const updateHandlerOnChange = useCallback(
-    debounce((e: any) => {
+    debounce((e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(setSearchValue(e.target.value));
     }, 1000),
     []
@@ -36,6 +36,7 @@ const Search: FC = () => {
           <FaRegTimesCircle />
         </span>
       )}
+  
       <svg
         className={styles.icon}
         enableBackground="new 0 0 32 32"
