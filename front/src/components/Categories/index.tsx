@@ -2,7 +2,7 @@ import { FC } from "react";
 
 type categoriesProps = {
   currentCat: number;
-  handlerCategory: any;
+  handlerCategory: (index: number) => void;
 };
 const Categories: FC<categoriesProps> = ({ currentCat, handlerCategory }) => {
   const categoryNames = [
