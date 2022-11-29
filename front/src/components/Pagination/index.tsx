@@ -2,12 +2,12 @@ import styles from "./Pagination.module.scss";
 import React, { FC } from "react";
 import ReactPaginate from "react-paginate";
 
-type PaginationProps={
-    pages:number;
-    changePages:any;
-}
+type PaginationProps = {
+  pages: number;
+  changePages: (page: number) => void;
+};
 
-const Pagination:FC<PaginationProps> = ({ pages, changePages }) => {
+const Pagination: FC<PaginationProps> = ({ pages, changePages }) => {
   return (
     <ReactPaginate
       className={styles.paginationWrapp}
@@ -19,7 +19,6 @@ const Pagination:FC<PaginationProps> = ({ pages, changePages }) => {
       pageRangeDisplayed={3}
       pageCount={pages}
       previousLabel="<"
-  
     />
   );
 };

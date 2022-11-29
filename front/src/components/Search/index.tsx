@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 
 const Search: FC = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string>("");
   const inpRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const Search: FC = () => {
           <FaRegTimesCircle />
         </span>
       )}
-  
+
       <svg
         className={styles.icon}
         enableBackground="new 0 0 32 32"
