@@ -11,6 +11,10 @@ type menuItem = {
   sortOrder: string;
 };
 
+type M = MouseEvent & {
+  path: Node[];
+};
+
 interface currentSortByProps {
   currentSortBy: menuItem;
 }
@@ -59,8 +63,9 @@ const Sort: FC<currentSortByProps> = ({ currentSortBy }) => {
   };
 
   useEffect(() => {
-    const handleOnclickOutside = (e: any) => {
-      if (!e.composedPath().includes(divRef.current)) {
+    const handleOnclickOutside = (e: MouseEvent) => {
+      const _e = e as M;
+      if (divRef.current && !_e.composedPath().includes(divRef.current)) {
         setIsOpenWindow(false);
       }
     };

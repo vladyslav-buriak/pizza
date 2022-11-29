@@ -27,7 +27,6 @@ export const filterSlice = createSlice({
     },
     setSearchValue: (state, action) => {
       state.searchValue = action.payload;
-      console.log(action.payload)
     },
   },
 });

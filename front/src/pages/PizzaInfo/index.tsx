@@ -9,7 +9,6 @@ import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
 const PizzaInfo:FC = () => {
   const dispatch = useDispatch();
   const { pizza, rating, loading } = useSelector(selectAbout);
-  console.log(rating);
   const { id } = useParams();
 
   const navigate = useNavigate();
