@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../Consts";
 import axios from "axios";
-
+import PizzaItem from "../../components/PizzaItem";
+// 
 const initialState = {
   pizzasItem: [],
   amount: 0,

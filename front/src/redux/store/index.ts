@@ -9,6 +9,8 @@ export const store = configureStore({
     filter: filterReducer,
     cart: cartReducer,
     pizzas: itemsReducer,
-    about:aboutReducer,
+    about: aboutReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
