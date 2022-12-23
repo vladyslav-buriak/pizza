@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface IFilterSliceState {
   currentCat: number;
@@ -8,7 +9,7 @@ interface IFilterSliceState {
 }
 
 interface ICurrentSortBy {
-  name: string;
+  name: "популярністю" | "ціна" | "алфавітом";
   sortProps: string;
   sortOrder: string;
 }
@@ -43,7 +44,7 @@ export const filterSlice = createSlice({
   },
 });
 
-export const selectFilter = (state:any) => state.filter;
+export const selectFilter = (state: RootState) => state.filter;
 
 export const { setSortCategory, setSortType, setCurrentPage, setSearchValue } =
   filterSlice.actions;

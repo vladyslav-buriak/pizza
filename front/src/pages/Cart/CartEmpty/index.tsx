@@ -1,10 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import cartImg from "../../../assets/images/empty-cart.png";
 
-
-const CartEmpty = ({ children }:any) => {
-
-  
+const CartEmpty = ({ children }: any) => {
   return (
     <div className="content">
       <div className="container container--cart">

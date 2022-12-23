@@ -33,7 +33,6 @@ const Home:FC = () => {
   const getAllPizzas = async () => {
     const category = currentCat > 0 ? `&category=${currentCat}` : " ";
     dispatch(
-      //@ts-ignore
       fetchAllPizzas({
         searchValue,
         sortBy: currentSortBy.sortProps,
