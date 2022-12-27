@@ -5,7 +5,7 @@ import axios from "axios";
 import { RootState } from "../store";
 //
 
-enum Status {
+ export enum Status {
   LOADING = "pending",
   SUCCESS = "success",
   ERROR = "error",

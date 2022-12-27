@@ -1,7 +1,6 @@
 import "../../scss/app.scss";
 import { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import {
   setSortCategory,
   setCurrentPage,
@@ -14,13 +13,15 @@ import PizzaItem from "../../components/PizzaItem";
 import Sort from "../../components/Sort";
 import CartEmpty from "../Cart/CartEmpty";
 import Pagination from "../../components/Pagination";
+import { useAppDispatch } from "../../hooks";
+
 
 const Home:FC = () => {
   const { currentSortBy, currentCat, currentPage, searchValue } =
     useSelector(selectFilter);
   const { pizzasItem, amount, limit, loading } = useSelector(selectPizzas);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handlerCategory = (index: number) => {
     dispatch(setSortCategory(index));

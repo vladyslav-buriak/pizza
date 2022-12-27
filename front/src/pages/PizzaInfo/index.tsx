@@ -2,13 +2,15 @@ import styles from "./PizzaInfo.module.scss";
 import React, { FC, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { fetchPizza, selectAbout } from "../../redux/slices/aboutSlice";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
+import { useAppDispatch } from "../../hooks";
 
-const PizzaInfo:FC = () => {
-  const dispatch = useDispatch();
-  const { pizza, rating, loading } = useSelector(selectAbout);
+
+const PizzaInfo: FC = () => {
+  const dispatch = useAppDispatch();
+  const { pizza, rating, loading  } = useSelector(selectAbout);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -20,7 +22,6 @@ const PizzaInfo:FC = () => {
   }
 
   const getPizzaInfo = async () => {
-    //@ts-ignore
     dispatch(fetchPizza(id));
   };
 
@@ -32,7 +33,9 @@ const PizzaInfo:FC = () => {
     return <SkeletonPizza info={false} height={400} width={400} />;
   }
   return (
-    <div>
+
+  
+    <>
       <div className={styles.pizzaItem}>
         <img src={pizza.imageUrl} alt="pizza"></img>
         <h3>
@@ -45,7 +48,7 @@ const PizzaInfo:FC = () => {
         </p>
 
         <div className={styles.wrappRaiting}>
-          <span className={styles.raiting}>Рейтинг</span>
+          <span className={styles.rating}>Рейтинг</span>
           {raitingArr.map((r) => (
             <FaStar className={styles.icon} key={r}></FaStar>
           ))}
@@ -55,7 +58,7 @@ const PizzaInfo:FC = () => {
       <span className={styles.goBack} onClick={goBack}>
         Назад
       </span>
-    </div>
+    </>
   );
 };
 
