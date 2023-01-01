@@ -1,12 +1,11 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  addItems,
-  ICartItem,
-  selectCartItem,
-} from "../../redux/slices/cartSlice";
+import { addItems } from "../../redux/cart/slice";
+
+import { selectCartItem  } from "../../redux/cart/selectors";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ICartItem } from "../../redux/cart/types";
 
 type PizzaItemProps = {
   id: string;

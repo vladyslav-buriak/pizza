@@ -1,19 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-
-export interface ICartItem {
-  count: number;
-  title: string;
-  price: number;
-  id: string;
-  types: string;
-  sizes: number;
-  imageUrl: string;
-}
-interface ICartSliceState {
-  totalPrice: number;
-  items: ICartItem[];
-}
+import { ICartItem, ICartSliceState } from "./types";
 const initialState: ICartSliceState = {
   totalPrice: 0,
   items: [],
@@ -85,11 +71,6 @@ export const cartSlice = createSlice({
     },
   },
 });
-
-export const selectCart = (state: RootState) => state.cart;
-
-export const selectCartItem = (id: string) => (state: RootState) =>
-  state.cart.items.find((items: ICartItem) => items.id === id);
 
 export const { addItems, minusItems, plusItems, setClearCart, removeItems } =
   cartSlice.actions;

@@ -1,42 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { BASE_URL } from "../../Consts";
-import axios from "axios";
-import { Status } from "./pizzasSlice";
-import { RootState } from "../store";
+import { Status } from "../pizza/slice";
+import { fetchPizza } from "./asyncActions";
+import { IAboutSlice ,IPizzaInfo , ICreateThunk  } from "./types";
 
-interface IPizzaInfo {
-  category: number;
-  id: string;
-  imageUrl: string;
-  price: number;
-  rating: number;
-  sizes: number[];
-  title: string;
-  types: number[];
-}
-interface ICreateThunk {
-  count: number;
-  products: IPizzaInfo;
-}
-interface IAboutSlice {
-  pizza: IPizzaInfo;
-  rating: number;
-  loading: Status;
-}
 const initialState: IAboutSlice = {
   pizza: {} as IPizzaInfo,
   rating: 0,
   loading: Status.LOADING,
 };
 
-export const fetchPizza = createAsyncThunk<ICreateThunk, string | undefined>(
-  "pizza/fetchPizza",
-  async (id) => {
-    const { data } = await axios.get<ICreateThunk>(`${BASE_URL}${id}`);
-    return data;
-  }
-);
+
 
 export const aboutSlice = createSlice({
   name: "about",
@@ -67,7 +40,7 @@ export const aboutSlice = createSlice({
   },
 });
 
-export const selectAbout = (state: RootState) => state.about;
+
 export const { setPizza } = aboutSlice.actions;
 
 export default aboutSlice.reducer;

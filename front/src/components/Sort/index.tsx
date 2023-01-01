@@ -1,10 +1,9 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSortType } from "../../redux/slices/filterSlice";
+import { setSortType } from "../../redux/filter/slice";
 import { useEffect } from "react";
 import { useRef } from "react";
 import React from "react";
-import { useWhyDidYouUpdate } from "ahooks";
 
 type menuItem = {
   name: string;
@@ -54,8 +53,6 @@ const menuList: menuItem[] = [
 ];
 
 const Sort: FC<currentSortByProps> = React.memo(({ currentSortBy }) => {
-  useWhyDidYouUpdate("Sort", { currentSortBy });
-
   const dispatch = useDispatch();
   const divRef = useRef<HTMLDivElement>(null);
   const [isOpenWindow, setIsOpenWindow] = useState(false);

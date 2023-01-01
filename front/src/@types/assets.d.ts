@@ -13,4 +13,6 @@ declare module "*.png" {
     export default classes;
   }
   
+
+ /// <reference types="redux-persist" />
  

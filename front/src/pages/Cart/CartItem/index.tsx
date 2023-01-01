@@ -3,7 +3,7 @@ import {
   minusItems,
   plusItems,
   removeItems,
-} from "../../../redux/slices/cartSlice";
+} from "../../../redux/cart/slice";
 import React, { FC } from "react";
 
 type CartItemProps = {

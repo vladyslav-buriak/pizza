@@ -1,19 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-
-interface IFilterSliceState {
-  currentCat: number;
-  currentPage: number;
-  searchValue: string;
-  currentSortBy: ICurrentSortBy;
-}
-
-interface ICurrentSortBy {
-  name: "популярністю" | "ціна" | "алфавітом";
-  sortProps: string;
-  sortOrder: string;
-}
-
+import { IFilterSliceState } from "./types";
 const initialState: IFilterSliceState = {
   currentCat: 0,
   currentPage: 1,
@@ -43,8 +29,6 @@ export const filterSlice = createSlice({
     },
   },
 });
-
-export const selectFilter = (state: RootState) => state.filter;
 
 export const { setSortCategory, setSortType, setCurrentPage, setSearchValue } =
   filterSlice.actions;

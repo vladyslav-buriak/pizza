@@ -2,15 +2,15 @@ import styles from "./PizzaInfo.module.scss";
 import React, { FC, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import {  useSelector } from "react-redux";
-import { fetchPizza, selectAbout } from "../../redux/slices/aboutSlice";
+import { useSelector } from "react-redux";
+import { fetchPizza } from "../../redux/about/asyncActions";
+import { selectAbout } from "../../redux/about/selectors";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
 import { useAppDispatch } from "../../hooks";
 
-
 const PizzaInfo: FC = () => {
   const dispatch = useAppDispatch();
-  const { pizza, rating, loading  } = useSelector(selectAbout);
+  const { pizza, rating, loading } = useSelector(selectAbout);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -33,8 +33,6 @@ const PizzaInfo: FC = () => {
     return <SkeletonPizza info={false} height={400} width={400} />;
   }
   return (
-
-  
     <>
       <div className={styles.pizzaItem}>
         <img src={pizza.imageUrl} alt="pizza"></img>

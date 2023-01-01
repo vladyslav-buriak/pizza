@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectCart, setClearCart } from "../../redux/slices/cartSlice";
+// import { selectCart, setClearCart } from "../../../../";
+import { selectCart } from "../../redux/cart/selectors";
+import { setClearCart } from "../../redux/cart/slice";
 import CartItem from "./CartItem";
 import CartEmpty from "./CartEmpty";
 import { FC } from "react";
 
-const Cart:FC = () => {
+const Cart: FC = () => {
   const { totalPrice, items } = useSelector(selectCart);
   const dispatch = useDispatch();
 
-  let totalCount = items.reduce((count:number, p:any) => p.count + count, 0);
+  let totalCount = items.reduce((count: number, p: any) => p.count + count, 0);
 
   const clearCart = () => {
     if (items.length) {
@@ -105,7 +107,8 @@ const Cart:FC = () => {
           </div>
         </div>
         <div className="content__items content__items--card">
-          {items.length && items.map((p:any) => <CartItem key={p.id} {...p} />)}
+          {items.length &&
+            items.map((p: any) => <CartItem key={p.id} {...p} />)}
         </div>
         <div className="cart__bottom">
           <div className="cart__bottom-details">
@@ -119,7 +122,10 @@ const Cart:FC = () => {
             </span>
           </div>
           <div className="cart__bottom-buttons">
-            <Link to="/" className="button button--outline button--add go-back-btn">
+            <Link
+              to="/"
+              className="button button--outline button--add go-back-btn"
+            >
               <svg
                 width="8"
                 height="14"

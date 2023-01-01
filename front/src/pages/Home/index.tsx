@@ -1,12 +1,10 @@
 import "../../scss/app.scss";
 import { FC, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-  setSortCategory,
-  setCurrentPage,
-  selectFilter,
-} from "../../redux/slices/filterSlice";
-import { fetchAllPizzas, selectPizzas } from "../../redux/slices/pizzasSlice";
+import { setSortCategory, setCurrentPage } from "../../redux/filter/slice";
+import { selectFilter } from "../../redux/filter/selectors";
+import { selectPizzas } from "../../redux/pizza/selectors";
+import { fetchAllPizzas } from "../../redux/pizza/asyncActions";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
 import Categories from "../../components/Categories";
 import PizzaItem from "../../components/PizzaItem";
