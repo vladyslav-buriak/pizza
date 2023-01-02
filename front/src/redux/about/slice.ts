@@ -1,15 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Status } from "../pizza/slice";
 import { fetchPizza } from "./asyncActions";
-import { IAboutSlice ,IPizzaInfo , ICreateThunk  } from "./types";
+import { IAboutSlice, IPizzaInfo, ICreateThunk } from "./types";
 
 const initialState: IAboutSlice = {
   pizza: {} as IPizzaInfo,
   rating: 0,
   loading: Status.LOADING,
 };
-
-
 
 export const aboutSlice = createSlice({
   name: "about",
@@ -30,7 +28,6 @@ export const aboutSlice = createSlice({
         state.loading = Status.SUCCESS;
         state.pizza = { ...action.payload.products };
         state.rating = action.payload.products.rating;
-        console.log(action.payload.products);
       }
     );
     builder.addCase(fetchPizza.rejected, (state) => {
@@ -39,7 +36,6 @@ export const aboutSlice = createSlice({
     });
   },
 });
-
 
 export const { setPizza } = aboutSlice.actions;
 

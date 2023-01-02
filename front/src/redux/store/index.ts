@@ -1,4 +1,7 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import { getDefaultMiddleware } from "@reduxjs/toolkit";
+
 import filterReducer from "../../redux/filter/slice";
 import cartReducer from "../../redux/cart/slice";
 import itemsReducer from "../../redux/pizza/slice";
@@ -23,6 +26,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: ["persist/PERSIST"],
+    },
+  }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

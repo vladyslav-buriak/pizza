@@ -1,7 +1,7 @@
 import styles from "./NotFound.module.scss";
-import React, { FC } from "react";
+import { FC } from "react";
 
-const NotFound: FC = () => {
+export const NotFound: FC = () => {
   return (
     <div className={styles.wrapp}>
       <h1>
@@ -10,5 +10,3 @@ const NotFound: FC = () => {
     </div>
   );
 };
-
-export default NotFound;

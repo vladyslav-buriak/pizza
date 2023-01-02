@@ -1,5 +1,5 @@
 import styles from "./Pagination.module.scss";
-import React, { FC } from "react";
+import  { FC } from "react";
 import ReactPaginate from "react-paginate";
 
 type PaginationProps = {
@@ -7,7 +7,7 @@ type PaginationProps = {
   changePages: (page: number) => void;
 };
 
-const Pagination: FC<PaginationProps> = ({ pages, changePages }) => {
+export const Pagination: FC<PaginationProps> = ({ pages, changePages }) => {
   return (
     <ReactPaginate
       className={styles.paginationWrapp}
@@ -22,5 +22,3 @@ const Pagination: FC<PaginationProps> = ({ pages, changePages }) => {
     />
   );
 };
-
-export default Pagination;

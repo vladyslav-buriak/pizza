@@ -1,8 +1,7 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItems } from "../../redux/cart/slice";
-
-import { selectCartItem  } from "../../redux/cart/selectors";
+import { selectCartItem } from "../../redux/cart/selectors";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ICartItem } from "../../redux/cart/types";
@@ -16,7 +15,7 @@ type PizzaItemProps = {
   types: number[];
   count: number;
 };
-const PizzaItem: FC<PizzaItemProps> = ({
+export const PizzaItem: FC<PizzaItemProps> = ({
   id,
   imageUrl,
   title,
@@ -108,5 +107,3 @@ const PizzaItem: FC<PizzaItemProps> = ({
     </div>
   );
 };
-
-export default PizzaItem;

@@ -1,22 +1,21 @@
 import "../../scss/app.scss";
 import { FC, useCallback, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { setSortCategory, setCurrentPage } from "../../redux/filter/slice";
 import { selectFilter } from "../../redux/filter/selectors";
 import { selectPizzas } from "../../redux/pizza/selectors";
 import { fetchAllPizzas } from "../../redux/pizza/asyncActions";
 import SkeletonPizza from "../../components/PizzaItem/Skeleton/SkeletonPizza";
-import Categories from "../../components/Categories";
-import PizzaItem from "../../components/PizzaItem";
-import Sort from "../../components/Sort";
-import CartEmpty from "../Cart/CartEmpty";
-import Pagination from "../../components/Pagination";
-import { useAppDispatch } from "../../hooks";
+import { Categories } from "../../components/";
+import { PizzaItem } from "../../components/";
+import { Sort } from "../../components/";
+import { CartEmpty } from "../../components/";
+import { Pagination } from "../../components/";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const Home: FC = () => {
   const { currentSortBy, currentCat, currentPage, searchValue } =
-    useSelector(selectFilter);
-  const { pizzasItem, amount, limit, loading } = useSelector(selectPizzas);
+    useAppSelector(selectFilter);
+  const { pizzasItem, amount, limit, loading } = useAppSelector(selectPizzas);
 
   const dispatch = useAppDispatch();
 

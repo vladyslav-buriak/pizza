@@ -1,14 +1,20 @@
-
 import "./scss/app.scss";
 import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import NotFound from "./pages/NotFound";
-import PizzaInfo from "./pages/PizzaInfo";
+// import NotFound from "./pages/NotFound";
+import { NotFound } from "./components";
 import Layout from "./layots/layout";
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import Loadable from "react-loadable";
 
-<App />;
+const Cart = Loadable({
+  loader: () => import(/*webpackChunkName */ "./pages/Cart"),
+  loading: () => <h3>Сторінка завантажується...</h3>,
+});
+
+const PizzaInfo = Loadable({
+  loader: () => import(/*webpackChunkName */ "./pages/PizzaInfo"),
+  loading: () => <h3>Сторінка завантажується...</h3>,
+});
 
 function App() {
   return (

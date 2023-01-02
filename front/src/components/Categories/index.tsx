@@ -1,13 +1,12 @@
 import { FC } from "react";
 import React from "react";
 
-
 type categoriesProps = {
   currentCat: number;
   handlerCategory: (index: number) => void;
 };
 
-const Categories: FC<categoriesProps> = React.memo(
+export const Categories: FC<categoriesProps> = React.memo(
   ({ currentCat, handlerCategory }) => {
     const categoryNames = [
       "Всі",
@@ -37,5 +36,3 @@ const Categories: FC<categoriesProps> = React.memo(
     );
   }
 );
-
-export default Categories;

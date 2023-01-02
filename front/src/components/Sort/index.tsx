@@ -52,7 +52,7 @@ const menuList: menuItem[] = [
   },
 ];
 
-const Sort: FC<currentSortByProps> = React.memo(({ currentSortBy }) => {
+export const Sort: FC<currentSortByProps> = React.memo(({ currentSortBy }) => {
   const dispatch = useDispatch();
   const divRef = useRef<HTMLDivElement>(null);
   const [isOpenWindow, setIsOpenWindow] = useState(false);
@@ -124,5 +124,3 @@ const Sort: FC<currentSortByProps> = React.memo(({ currentSortBy }) => {
     </div>
   );
 });
-
-export default Sort;
